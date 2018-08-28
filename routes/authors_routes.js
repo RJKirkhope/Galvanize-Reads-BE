@@ -4,7 +4,7 @@ const router = express.Router();
 const queries = require('../queries');
 
 router.get("/", (request, response, next) => {
-    queries.listAuthors('authors').then(authors => {
+    queries.list('authors').then(authors => {
         response.json({authors});
     }).catch(next);
 });

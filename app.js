@@ -5,13 +5,15 @@ const app = express();
 const port = process.env.PORT || 8000
 const books = require("./routes/books_routes");
 const authors = require("./routes/authors_routes")
-
+const authorsbooks = require("./routes/authorsbooks")
+const booksauthors = require("./routes/booksauthors")
 app.use(bodyParser.json());
 app.use(cors())
 
 app.use("/books", books);
 app.use("/authors", authors)
-
+app.use("/authorsbooks", authorsbooks)
+app.use("/booksauthors", booksauthors)
 
 // catch 404 and forward to error handler
 app.use((request, response, next) => {
