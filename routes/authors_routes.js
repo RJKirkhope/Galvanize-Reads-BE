@@ -1,25 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-const queries = require('./queries');
+const queries = require('../queries');
 
 router.get("/", (request, response, next) => {
-    queries.list('authors').then(authors => {
+    queries.listAuthors('authors').then(authors => {
         response.json({authors});
     }).catch(next);
 });
 
 router.get("/:id", (request, response, next) => {
     queries.read('authors', request.params.id).then(authors => {
-        book
+        authors
             ? response.json({authors})
             : response.status(404).json({message: 'Not found'})
     }).catch(next);
 });
 
 router.post("/", (request, response, next) => {
-    queries.create('authors', request.body).then(authors => {
-        response.status(201).json({authors});
+    queries.create('authors', request.body).then(newForm => {
+        response.status(201).json({newForm});
     }).catch(next);
 });
 
@@ -30,8 +30,8 @@ router.delete("/:id", (request, response, next) => {
 });
 
 router.put("/:id", (request, response, next) => {
-    queries.update('authors', request.params.id, request.body).then(authors => {
-        response.json({author: author[0]});
+    queries.update('authors', request.params.id, request.body).then(newForm => {
+        response.json({newForm: newForm[0]});
     }).catch(next);
 });
 
