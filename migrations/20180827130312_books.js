@@ -1,10 +1,10 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('books', function(table){
     table.increments()
-    table.text('BookTitle')
-    table.text('BookGenre')
-    table.text('BookDescription')
-    table.text('BookCoverURL')
+    table.text('book_title')
+    table.text('book_genre')
+    table.text('book_description')
+    table.text('book_cover_URL')
   })
 };
 
