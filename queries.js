@@ -21,11 +21,11 @@ module.exports = {
   read(tableName, id){
     return database(tableName).select().where('id', id).first()
 },
-  create(tableName, newForm){
-    return database(tableName).insert(newForm).returning('*').then(record => record[0])
+  create(tableName, newPost){
+    return database(tableName).insert(newPost).returning('*').then(record => record[0])
 },
-  update( tableName, id, newForm){
-    return database(tableName).update(newForm).where('id', id).returning("*").then(record => record[0])
+  update( tableName, id, newUpdate){
+    return database(tableName).update(newUpdate).where('id', id).returning("*").then(record => record[0])
 },
   delete(tableName, id){
     return database(tableName).delete().where('id', id)
